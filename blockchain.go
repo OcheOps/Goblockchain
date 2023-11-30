@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 
 )
 
@@ -17,6 +18,6 @@ func main ()  {
 
 
 //func init(){
-	log.SetPrefix("Blockchain:")
+	//log.SetPrefix("Blockchain:")
 //}
 
