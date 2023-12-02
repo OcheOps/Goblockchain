@@ -22,6 +22,30 @@ func NewBlock(nonce int, previousHash string, transactions []string) *Block {
 	return b
 }
 
+
+
+
+
+type Blockchain struct {
+	transactionPool []string 	
+	chain []*Block
+}
+
+
+func NewBlockchain() *Blockchain {
+	bc := new(Blockchain)
+	genesisBlock := bc.CreateBlock(0, "init hash")
+	bc.chain = append(bc.chain, genesisBlock)
+	return bc
+}	
+func(bc *Blockchain) CreateBlock(nonce int, previousHash string) *Block {
+	block := NewBlock(nonce, previousHash, bc.transactionPool)
+	bc.transactionPool = []string{}
+	bc.chain = append(bc.chain, block)
+	return block
+
+}
+
 func init() {
 	log.SetPrefix("Blockchain: ")
 }

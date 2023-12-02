@@ -1,52 +1,36 @@
-package main 
-
 import (
 	"fmt"
 	"log"
 	"time"
-
 )
 
-type Block struct{
-
-	nonce int
+type Block struct {
+	nonce        int
 	previousHash string
-	timestamp int64
+	timestamp    int64
 	transactions []string
-
 }
 
-func NewBlock(nonce int, previousHash string, transactions []string) 
-*Block{
+func NewBlock(nonce int, previousHash string) *Block {
 	b := new(Block)
-	b.nonce = nonce
 	b.timestamp = time.Now().UnixNano()
+	b.nonce = nonce
 	b.previousHash = previousHash
-	b.transactions = transactions
 	return b
-
 }
 
-
-func init(){
-	log.SetPrefix("Blockchain:")
+func (b *Block) Print() {
+	fmt.Printf("timestamp       %d\n", b.timestamp)
+	fmt.Printf("nonce           %d\n", b.nonce)
+	fmt.Printf("previous_hash   %s\n", b.previousHash)
+	fmt.Printf("transactions    %s\n", b.transactions)
 }
 
-func (b *Block) Print(){
-	fmt.Printf("timestamp: %d/n", b.timestamp)
-	fmt.Printf("nonce: %d/n", b.nonce)
-	fmt.Printf("previousHash: %s/n", b.previousHash)
-	fmt.Printf("transactions: %s/n", b.transactions)
-
+func init() {
+	log.SetPrefix("Blockchain: ")
 }
- 
-func main ()  {
 
-	b:= NewBlock(0, "init hash" )
+func main() {
+	b := NewBlock(0, "init hash")
 	b.Print()
-
-	
 }
-
-
-
