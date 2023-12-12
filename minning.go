@@ -170,3 +170,5 @@ func main() {
 	blockChain.CreateBlock(nonce, previousHash)
 	blockChain.Print()
 }
+
+//have a long day tomorrow just want  to keep my github streak 
